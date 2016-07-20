@@ -55,7 +55,11 @@ Public Class TextFile
         RaiseEvent FileSaved(Me, New EventArgs)
     End Sub
 
-    Public Function GetDefaultExtension() As String Implements ISavableAs.GetDefaultExtension
-        Return ".txt"
+    Public Overridable Function GetDefaultExtension() As String Implements ISavableAs.GetDefaultExtension
+        Return "txt"
+    End Function
+
+    Public Overridable Function GetSupportedExtensions() As IEnumerable(Of String) Implements ISavableAs.GetSupportedExtensions
+        Return {"txt"}
     End Function
 End Class
