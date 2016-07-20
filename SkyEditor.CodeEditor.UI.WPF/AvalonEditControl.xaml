@@ -11,6 +11,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <avalon:TextEditor x:Name="txtCode" Text="{Binding Path=(codeEditor:CodeFile.Text), UpdateSourceTrigger=PropertyChanged}"/>
+        <avalon:TextEditor x:Name="txtCode" />
     </Grid>
 </skyWPF:DataBoundObjectControl>

@@ -62,12 +62,18 @@ Public Class AvalonEditControl
         txtCode.ShowLineNumbers = True
     End Sub
 
+    Private Sub txtCode_TextChanged(sender As Object, e As EventArgs) Handles txtCode.TextChanged
+        DirectCast(ObjectToEdit, CodeFile).Text = txtCode.Text
+    End Sub
+
     Public Overrides Property ObjectToEdit As Object
         Get
             Return MyBase.ObjectToEdit
         End Get
         Set(value As Object)
             MyBase.ObjectToEdit = value
+
+            txtCode.Text = DirectCast(ObjectToEdit, CodeFile).Text
 
             Dim highlighter As New AvalonCodeHighlighter(DirectCast(value, CodeFile).GetCodeHighlightRules)
 
