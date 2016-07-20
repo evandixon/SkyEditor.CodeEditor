@@ -180,6 +180,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="SkyEditor.CodeEditor.UI.WPF.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SkyEditor.CodeEditor\SkyEditor.CodeEditor.vbproj">
