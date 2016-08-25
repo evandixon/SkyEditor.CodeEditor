@@ -9,7 +9,6 @@ Public Class TextFile
     Implements INamed
     Implements INotifyModified
     Implements ITextFile
-    Implements IContainer(Of String)
 
     Public Sub New()
         Text = ""
@@ -27,7 +26,7 @@ Public Class TextFile
         End Get
     End Property
 
-    Public Property Text As String Implements ITextFile.Text, IContainer(Of String).Item
+    Public Property Text As String Implements ITextFile.Text
 
     Dim _name As String
 
