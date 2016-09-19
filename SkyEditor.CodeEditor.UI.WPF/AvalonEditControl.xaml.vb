@@ -64,6 +64,7 @@ Public Class AvalonEditControl
 
     Private Sub txtCode_TextChanged(sender As Object, e As EventArgs) Handles txtCode.TextChanged
         DirectCast(ObjectToEdit, CodeFile).Text = txtCode.Text
+        IsModified = True
     End Sub
 
     Public Overrides Property ObjectToEdit As Object
