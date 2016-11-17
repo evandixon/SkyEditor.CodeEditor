@@ -9,7 +9,6 @@ Public Class TextFile
     Implements INamed
     Implements INotifyModified
     Implements ITextFile
-    Implements IContainer(Of String)
 
     Public Sub New()
         Text = ""
@@ -27,7 +26,7 @@ Public Class TextFile
         End Get
     End Property
 
-    Public Property Text As String Implements ITextFile.Text, IContainer(Of String).Item
+    Public Property Text As String Implements ITextFile.Text
 
     Dim _name As String
 
@@ -55,7 +54,11 @@ Public Class TextFile
         RaiseEvent FileSaved(Me, New EventArgs)
     End Sub
 
-    Public Function GetDefaultExtension() As String Implements ISavableAs.GetDefaultExtension
-        Return ".txt"
+    Public Overridable Function GetDefaultExtension() As String Implements ISavableAs.GetDefaultExtension
+        Return "txt"
+    End Function
+
+    Public Overridable Function GetSupportedExtensions() As IEnumerable(Of String) Implements ISavableAs.GetSupportedExtensions
+        Return {"txt"}
     End Function
 End Class

@@ -1,13 +1,16 @@
-﻿<UserControl x:Class="AvalonEditControl"
+﻿<skyWPF:DataBoundObjectControl x:Class="AvalonEditControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TextEditor.WPF"
+             xmlns:local="clr-namespace:SkyEditor.CodeEditor.UI.WPF"
+             xmlns:skyWPF="clr-namespace:SkyEditor.UI.WPF;assembly=SkyEditor.UI.WPF"
+             xmlns:codeEditor="clr-namespace:SkyEditor.CodeEditor;assembly=SkyEditor.CodeEditor"
              xmlns:avalon="http://icsharpcode.net/sharpdevelop/avalonedit"
+             TargetType="{x:Type codeEditor:CodeFile}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <avalon:TextEditor x:Name="txtCode"/>
+        <avalon:TextEditor x:Name="txtCode" />
     </Grid>
-</UserControl>
+</skyWPF:DataBoundObjectControl>

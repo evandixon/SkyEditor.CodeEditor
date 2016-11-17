@@ -97,7 +97,10 @@ Public Class CodeExtraDataFile
     Public Event FileSaved As iSavable.FileSavedEventHandler Implements iSavable.FileSaved
 
     Public Function GetDefaultExtension() As String Implements ISavableAs.GetDefaultExtension
-        Return ".fdd"
+        Return "fdd"
     End Function
 
+    Public Function GetSupportedExtensions() As IEnumerable(Of String) Implements ISavableAs.GetSupportedExtensions
+        Return {"fdd"}
+    End Function
 End Class
