@@ -59,14 +59,15 @@ Public Class CodeExtraDataFile
         Return out
     End Function
 
-    Public Sub Save(provider As IOProvider) Implements ISavable.Save
-        Save(Filename, provider)
-    End Sub
+    Public Async Function Save(provider As IOProvider) As Task Implements ISavable.Save
+        Await Save(Filename, provider)
+    End Function
 
-    Public Sub Save(Filename As String, provider As IOProvider) Implements ISavableAs.Save
+    Public Function Save(Filename As String, provider As IOProvider) As Task Implements ISavableAs.Save
         Dim j As New JsonStructure With {.Database = Me.Database, .AutoCompleteChars = Me.AutoCompleteChars}
         Json.SerializeToFile(Filename, j, provider)
-    End Sub
+        Return Task.CompletedTask
+    End Function
 
     Public Sub New(Filename As String, provider As IOProvider)
         Me.New

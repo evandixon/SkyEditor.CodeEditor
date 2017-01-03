@@ -44,15 +44,17 @@ Public Class TextFile
         Return Task.CompletedTask
     End Function
 
-    Public Sub Save(provider As IOProvider) Implements ISavable.Save
+    Public Function Save(provider As IOProvider) As Task Implements ISavable.Save
         provider.WriteAllText(Me.Filename, Text)
         RaiseEvent FileSaved(Me, New EventArgs)
-    End Sub
+        Return Task.CompletedTask
+    End Function
 
-    Public Sub Save(Filename As String, provider As IOProvider) Implements ISavableAs.Save
+    Public Function Save(Filename As String, provider As IOProvider) As Task Implements ISavableAs.Save
         provider.WriteAllText(Filename, Text)
         RaiseEvent FileSaved(Me, New EventArgs)
-    End Sub
+        Return Task.CompletedTask
+    End Function
 
     Public Overridable Function GetDefaultExtension() As String Implements ISavableAs.GetDefaultExtension
         Return "txt"
