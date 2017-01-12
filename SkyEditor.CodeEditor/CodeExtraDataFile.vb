@@ -59,17 +59,17 @@ Public Class CodeExtraDataFile
         Return out
     End Function
 
-    Public Async Function Save(provider As IOProvider) As Task Implements ISavable.Save
+    Public Async Function Save(provider As IIOProvider) As Task Implements ISavable.Save
         Await Save(Filename, provider)
     End Function
 
-    Public Function Save(Filename As String, provider As IOProvider) As Task Implements ISavableAs.Save
+    Public Function Save(Filename As String, provider As IIOProvider) As Task Implements ISavableAs.Save
         Dim j As New JsonStructure With {.Database = Me.Database, .AutoCompleteChars = Me.AutoCompleteChars}
         Json.SerializeToFile(Filename, j, provider)
         Return Task.CompletedTask
     End Function
 
-    Public Sub New(Filename As String, provider As IOProvider)
+    Public Sub New(Filename As String, provider As IIOProvider)
         Me.New
         OpenFileInternal(Filename, provider)
     End Sub
@@ -84,11 +84,11 @@ Public Class CodeExtraDataFile
         AutoCompleteChars = New List(Of Char)
     End Sub
 
-    Public Async Function OpenFile(Filename As String, Provider As IOProvider) As Task Implements IOpenableFile.OpenFile
+    Public Async Function OpenFile(Filename As String, Provider As IIOProvider) As Task Implements IOpenableFile.OpenFile
         Await OpenFileInternal(Filename, Provider)
     End Function
 
-    Private Function OpenFileInternal(Filename As String, provider As IOProvider) As Task
+    Private Function OpenFileInternal(Filename As String, provider As IIOProvider) As Task
         Dim j = Json.DeserializeFromFile(Of JsonStructure)(Filename, provider)
         Me.Database = j.Database
         Me.AutoCompleteChars = j.AutoCompleteChars
