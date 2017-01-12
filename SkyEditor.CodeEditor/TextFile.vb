@@ -38,19 +38,19 @@ Public Class TextFile
         _name = Name
     End Sub
 
-    Public Function OpenFile(Filename As String, Provider As IOProvider) As Task Implements IOpenableFile.OpenFile
+    Public Function OpenFile(Filename As String, Provider As IIOProvider) As Task Implements IOpenableFile.OpenFile
         Text = Provider.ReadAllText(Filename)
         Me.Filename = Filename
         Return Task.CompletedTask
     End Function
 
-    Public Function Save(provider As IOProvider) As Task Implements ISavable.Save
+    Public Function Save(provider As IIOProvider) As Task Implements ISavable.Save
         provider.WriteAllText(Me.Filename, Text)
         RaiseEvent FileSaved(Me, New EventArgs)
         Return Task.CompletedTask
     End Function
 
-    Public Function Save(Filename As String, provider As IOProvider) As Task Implements ISavableAs.Save
+    Public Function Save(Filename As String, provider As IIOProvider) As Task Implements ISavableAs.Save
         provider.WriteAllText(Filename, Text)
         RaiseEvent FileSaved(Me, New EventArgs)
         Return Task.CompletedTask
