@@ -7,7 +7,6 @@ Imports SkyEditor.Core.Utilities
 ''' </summary>
 Public Class CodeExtraDataFile
     Inherits CodeExtraData
-    'Implements iCreatableFile
     Implements iNamed
     Implements IOpenableFile
     Implements iOnDisk
@@ -95,13 +94,13 @@ Public Class CodeExtraDataFile
         Return Task.CompletedTask
     End Function
 
-    Public Event FileSaved As iSavable.FileSavedEventHandler Implements iSavable.FileSaved
+    Public Event FileSaved As EventHandler Implements ISavable.FileSaved
 
     Public Function GetDefaultExtension() As String Implements ISavableAs.GetDefaultExtension
-        Return "fdd"
+        Return "*.fdd"
     End Function
 
     Public Function GetSupportedExtensions() As IEnumerable(Of String) Implements ISavableAs.GetSupportedExtensions
-        Return {"fdd"}
+        Return {"*.fdd"}
     End Function
 End Class

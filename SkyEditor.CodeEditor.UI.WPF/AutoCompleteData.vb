@@ -6,6 +6,19 @@ Imports ICSharpCode.AvalonEdit.Editing
 Public Class AutoCompleteData
     Implements ICompletionData
 
+    Public Sub New(Info As FunctionDocumentation, SeparatorChars As List(Of Char))
+        Dim part As New Text.StringBuilder
+        For Each c In Info.FunctionName.ToCharArray
+            If SeparatorChars.Contains(c) Then
+                part = New Text.StringBuilder
+            Else
+                part.Append(c)
+            End If
+        Next
+        Me.Text = part.ToString
+        Me.Description = Info.FunctionDescription
+    End Sub
+
     Public ReadOnly Property Content As Object Implements ICompletionData.Content
         Get
             Return Me.Text
@@ -28,16 +41,4 @@ Public Class AutoCompleteData
         textArea.Document.Replace(completionSegment, Me.Text)
     End Sub
 
-    Public Sub New(Info As FunctionDocumentation, SeparatorChars As List(Of Char))
-        Dim part As New Text.StringBuilder
-        For Each c In Info.FunctionName.ToCharArray
-            If SeparatorChars.Contains(c) Then
-                part = New Text.StringBuilder
-            Else
-                part.Append(c)
-            End If
-        Next
-        Me.Text = part.ToString
-        Me.Description = Info.FunctionDescription
-    End Sub
 End Class

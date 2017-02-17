@@ -19,10 +19,10 @@
     End Function
 
     Public Overrides Function GetDefaultExtension() As String
-        Return "lua"
+        Return "*.lua"
     End Function
 
     Public Overrides Function GetSupportedExtensions() As IEnumerable(Of String)
-        Return {"lua", "txt"}
+        Return {"*.lua", "*.txt"}
     End Function
 End Class

@@ -8,7 +8,7 @@ Imports SkyEditor.Core.Utilities
 Imports SkyEditor.UI.WPF
 
 Public Class AvalonEditControl
-    Inherits DataBoundObjectControl
+    Inherits DataBoundViewControl
 
     Public Sub New()
         ' This call is required by the designer.
@@ -63,27 +63,25 @@ Public Class AvalonEditControl
     End Sub
 
     Private Sub txtCode_TextChanged(sender As Object, e As EventArgs) Handles txtCode.TextChanged
-        DirectCast(ObjectToEdit, CodeFile).Text = txtCode.Text
+        DirectCast(ViewModel, CodeFile).Contents = txtCode.Text
         IsModified = True
     End Sub
 
-    Public Overrides Property ObjectToEdit As Object
+    Public Overrides Property ViewModel As Object
         Get
-            Return MyBase.ObjectToEdit
+            Return MyBase.ViewModel
         End Get
         Set(value As Object)
-            MyBase.ObjectToEdit = value
+            MyBase.ViewModel = value
 
-            txtCode.Text = DirectCast(ObjectToEdit, CodeFile).Text
+            txtCode.Text = DirectCast(ViewModel, CodeFile).Contents
 
             Dim highlighter As New AvalonCodeHighlighter(DirectCast(value, CodeFile).GetCodeHighlightRules)
 
-            'Dim p = PluginManager.GetInstance.GetOpenedFileProject(GetEditingObject)
-            'If p IsNot Nothing AndAlso TypeOf p Is ICodeProject Then
-            '    extraData = DirectCast(p, ICodeProject).GetExtraData(GetEditingObject(Of CodeFile))
-            'Else
-            'extraData = New DebugExtraData
-            'End If
+            Dim p = CurrentApplicationViewModel.GetFileViewModelForModel(value)?.ParentProject
+            If p IsNot Nothing AndAlso TypeOf p Is ICodeProject Then
+                extraData = DirectCast(p, ICodeProject).GetExtraData(value)
+            End If
 
             If extraData IsNot Nothing AndAlso extraData.AdditionalHighlightRules IsNot Nothing Then
                 highlighter.AddRuleSet("Project Rules", extraData.AdditionalHighlightRules)

@@ -1,4 +1,7 @@
-﻿Public MustInherit Class CodeExtraData
+﻿''' <summary>
+''' Defines extra data for a code file needed for auto completion and function documentation
+''' </summary>
+Public MustInherit Class CodeExtraData
 
     ''' <summary>
     ''' Returns an IEnumerable of Char that can trigger the auto complete popup.
@@ -12,7 +15,7 @@
     ''' <param name="CurrentWord">Word that is currently typed.</param>
     ''' <returns></returns>
     ''' <remarks>For example, in a .Net CodeExtraData, GetAutoCompleteData("Console.Wr") would return info for "Console.Writeline" and "Console.Write".</remarks>
-    Public MustOverride Function GetAutoCompleteData(CurrentWord As String) As IEnumerable(Of FunctionDocumentation)
+    Public MustOverride Function GetAutoCompleteData(currentWord As String) As IEnumerable(Of FunctionDocumentation)
 
     ''' <summary>
     ''' Returns documentation for the given function.
@@ -20,7 +23,7 @@
     ''' <param name="FunctionName">Name of the function for which to display documentation.</param>
     ''' <returns></returns>
     ''' <remarks>For example, if the CodeExtraData is for .Net, GetDocumentation("System.Console.Writeline") would return </remarks>
-    Public MustOverride Function GetDocumentation(FunctionName As String) As FunctionDocumentation
+    Public MustOverride Function GetDocumentation(functionName As String) As FunctionDocumentation
 
     ''' <summary>
     ''' Returns additional highlight rules for the given code file.

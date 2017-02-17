@@ -25,10 +25,6 @@ Public Class PluginInfo
         Manager.LoadRequiredPlugin(New SkyEditor.CodeEditor.PluginDefinition, Me)
     End Sub
 
-    Public Overrides Sub PrepareForDistribution()
-
-    End Sub
-
     Public Overrides Sub UnLoad(Manager As PluginManager)
 
     End Sub
