@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SkyEditor.CodeEditor", "SkyEditor.CodeEditor\SkyEditor.CodeEditor.vbproj", "{9E2FC9A8-CA27-4B5D-A79F-E92AA066A839}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SkyEditor.CodeEditor.UI.WPF", "SkyEditor.CodeEditor.UI.WPF\SkyEditor.CodeEditor.UI.WPF.vbproj", "{142E3B2B-19E9-4560-B411-4AD40FF8BD1B}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SkyEditor.CodeEditor.UI.WPF", "SkyEditor.CodeEditor.UI.WPF\SkyEditor.CodeEditor.UI.WPF.vbproj", "{CA491853-062D-4341-B246-6510F4C071D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +23,14 @@ Global
 		{9E2FC9A8-CA27-4B5D-A79F-E92AA066A839}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9E2FC9A8-CA27-4B5D-A79F-E92AA066A839}.Release|x86.ActiveCfg = Release|x86
 		{9E2FC9A8-CA27-4B5D-A79F-E92AA066A839}.Release|x86.Build.0 = Release|x86
-		{142E3B2B-19E9-4560-B411-4AD40FF8BD1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{142E3B2B-19E9-4560-B411-4AD40FF8BD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{142E3B2B-19E9-4560-B411-4AD40FF8BD1B}.Debug|x86.ActiveCfg = Debug|x86
-		{142E3B2B-19E9-4560-B411-4AD40FF8BD1B}.Debug|x86.Build.0 = Debug|x86
-		{142E3B2B-19E9-4560-B411-4AD40FF8BD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{142E3B2B-19E9-4560-B411-4AD40FF8BD1B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{142E3B2B-19E9-4560-B411-4AD40FF8BD1B}.Release|x86.ActiveCfg = Release|x86
-		{142E3B2B-19E9-4560-B411-4AD40FF8BD1B}.Release|x86.Build.0 = Release|x86
+		{CA491853-062D-4341-B246-6510F4C071D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA491853-062D-4341-B246-6510F4C071D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA491853-062D-4341-B246-6510F4C071D0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CA491853-062D-4341-B246-6510F4C071D0}.Debug|x86.Build.0 = Debug|Any CPU
+		{CA491853-062D-4341-B246-6510F4C071D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA491853-062D-4341-B246-6510F4C071D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA491853-062D-4341-B246-6510F4C071D0}.Release|x86.ActiveCfg = Release|Any CPU
+		{CA491853-062D-4341-B246-6510F4C071D0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

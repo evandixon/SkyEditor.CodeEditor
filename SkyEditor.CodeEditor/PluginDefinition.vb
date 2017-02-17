@@ -25,7 +25,7 @@ Public Class PluginDefinition
     End Property
 
     Public Overrides Sub Load(manager As PluginManager)
-        manager.RegisterIOFilter("*.txt", My.Resources.Language.TextFiles)
+        MyBase.Load(manager)
         manager.RegisterIOFilter("*.lua", My.Resources.Language.LuaFiles)
     End Sub
 

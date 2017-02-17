@@ -1,7 +1,9 @@
 ﻿Imports SkyEditor.Core
+Imports SkyEditor.Core.IO
+Imports SkyEditor.UI.WPF
 
 Public Class PluginInfo
-    Inherits SkyEditorPlugin
+    Inherits WPFCoreSkyEditorPlugin
 
     Public Overrides ReadOnly Property Credits As String
         Get
@@ -22,10 +24,8 @@ Public Class PluginInfo
     End Property
 
     Public Overrides Sub Load(Manager As PluginManager)
+        MyBase.Load(Manager)
         Manager.LoadRequiredPlugin(New SkyEditor.CodeEditor.PluginDefinition, Me)
     End Sub
 
-    Public Overrides Sub UnLoad(Manager As PluginManager)
-
-    End Sub
 End Class
