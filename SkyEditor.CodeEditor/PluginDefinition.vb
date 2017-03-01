@@ -31,10 +31,8 @@ Public Class PluginDefinition
 
     Public Function DetectFileType(file As GenericFile, manager As PluginManager) As Task(Of IEnumerable(Of FileTypeDetectionResult)) Implements IFileTypeDetector.DetectFileType
         Dim out As New List(Of FileTypeDetectionResult)
-        If file.Filename.ToLower.EndsWith(".txt") Then
-            out.Add(New FileTypeDetectionResult With {.FileType = GetType(TextFile).GetTypeInfo, .MatchChance = 0.1})
-        ElseIf file.Filename.ToLower.EndsWith(".lua") Then
-            out.Add(New FileTypeDetectionResult With {.FileType = GetType(LuaCodeFile).GetTypeInfo, .MatchChance = 0.1})
+        If file.Filename.ToLower.EndsWith(".lua") Then
+            out.Add(New FileTypeDetectionResult With {.FileType = GetType(LuaCodeFile).GetTypeInfo, .MatchChance = 0.6})
         End If
         Return Task.FromResult(DirectCast(out, IEnumerable(Of FileTypeDetectionResult)))
     End Function
