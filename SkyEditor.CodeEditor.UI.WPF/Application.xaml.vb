@@ -7,7 +7,7 @@ Class Application
 
     Private Async Sub Application_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
         StartupHelpers.EnableErrorDialog()
-        Await StartupHelpers.RunWPFStartupSequence(New PluginInfo)
+        Await StartupHelpers.ShowMainWindow(New PluginInfo)
     End Sub
 
 End Class

@@ -10,17 +10,23 @@ Imports SkyEditor.UI.WPF
 Public Class AvalonEditControl
     Inherits DataBoundViewControl
 
-    Public Sub New()
+    Public Sub New(applicationViewModel As ApplicationViewModel)
+        If applicationViewModel Is Nothing Then
+            Throw New ArgumentNullException(NameOf(applicationViewModel))
+        End If
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         AddHandler txtCode.TextArea.TextEntering, AddressOf txtCode_TextEntering
         AddHandler txtCode.TextArea.TextEntered, AddressOf txtCode_TextEntered
+        CurrentApplicationViewModel = applicationViewModel
     End Sub
 
     Dim extraData As CodeExtraData
     Private WithEvents autoComplete As CompletionWindow
+
+    Protected ReadOnly Property CurrentApplicationViewModel As ApplicationViewModel
 
     Private Sub txtCode_TextEntered(sender As Object, e As TextCompositionEventArgs)
         If extraData IsNot Nothing Then
