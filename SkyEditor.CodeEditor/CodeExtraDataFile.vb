@@ -1,15 +1,17 @@
-﻿Imports System.Runtime.Serialization
+﻿Imports System.IO
+Imports System.Runtime.Serialization
 Imports SkyEditor.Core.IO
 Imports SkyEditor.Core.Utilities
+Imports SkyEditor.IO.FileSystem
 
 ''' <summary>
 ''' An instance of CodeExtraData that reads its information from disk.
 ''' </summary>
 Public Class CodeExtraDataFile
     Inherits CodeExtraData
-    Implements iNamed
+    Implements INamed
     Implements IOpenableFile
-    Implements iOnDisk
+    Implements IOnDisk
     Implements ISavableAs
 
     Private Class JsonStructure
@@ -19,12 +21,12 @@ Public Class CodeExtraDataFile
 
     Public Property Database As List(Of FunctionDocumentation)
     Public Property AutoCompleteChars As List(Of Char)
-    Public Property Filename As String Implements iOnDisk.Filename
+    Public Property Filename As String Implements IOnDisk.Filename
 
-    Public ReadOnly Property Name As String Implements iNamed.Name
+    Public ReadOnly Property Name As String Implements INamed.Name
         Get
             If _name Is Nothing Then
-                Return IO.Path.GetFileNameWithoutExtension(Filename)
+                Return Path.GetFileNameWithoutExtension(Filename)
             Else
                 Return _name
             End If
@@ -58,17 +60,17 @@ Public Class CodeExtraDataFile
         Return out
     End Function
 
-    Public Async Function Save(provider As IIOProvider) As Task Implements ISavable.Save
+    Public Async Function Save(provider As IFileSystem) As Task Implements ISavable.Save
         Await Save(Filename, provider)
     End Function
 
-    Public Function Save(Filename As String, provider As IIOProvider) As Task Implements ISavableAs.Save
+    Public Function Save(Filename As String, provider As IFileSystem) As Task Implements ISavableAs.Save
         Dim j As New JsonStructure With {.Database = Me.Database, .AutoCompleteChars = Me.AutoCompleteChars}
         Json.SerializeToFile(Filename, j, provider)
         Return Task.CompletedTask
     End Function
 
-    Public Sub New(Filename As String, provider As IIOProvider)
+    Public Sub New(Filename As String, provider As IFileSystem)
         Me.New
         OpenFileInternal(Filename, provider)
     End Sub
@@ -83,11 +85,11 @@ Public Class CodeExtraDataFile
         AutoCompleteChars = New List(Of Char)
     End Sub
 
-    Public Async Function OpenFile(Filename As String, Provider As IIOProvider) As Task Implements IOpenableFile.OpenFile
+    Public Async Function OpenFile(Filename As String, Provider As IFileSystem) As Task Implements IOpenableFile.OpenFile
         Await OpenFileInternal(Filename, Provider)
     End Function
 
-    Private Function OpenFileInternal(Filename As String, provider As IIOProvider) As Task
+    Private Function OpenFileInternal(Filename As String, provider As IFileSystem) As Task
         Dim j = Json.DeserializeFromFile(Of JsonStructure)(Filename, provider)
         Me.Database = j.Database
         Me.AutoCompleteChars = j.AutoCompleteChars
